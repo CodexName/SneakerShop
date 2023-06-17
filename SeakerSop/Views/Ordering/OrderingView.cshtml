@@ -1,0 +1,68 @@
+﻿@model SeakerSop.Models.OrderNotMap
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Оформление заказа</title>
+    <style>
+        body {
+            background-color: white;
+            color: black;
+        }
+
+        form {
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+         <h1>Оформление заказа</h1>
+
+    <form method="post" asp-controller="Ordering" asp-action="AddDataOrderManInfo" >
+        <label for="post-office">Почтовое отделение:</label>
+        <body>
+    <select id="cars" asp-for="NumberPostOffice">
+        <option value="22">Кам'янське(Дніпропетровська обл) | Відділення №22</option>
+        <option value="4">Кам'янське(Дніпропетровська обл) | Відділення №4</option>
+        <option value="9">Кам'янське(Дніпропетровська обл) | Відділення №9</option>
+        <option value="18">Кам'янське(Дніпропетровська обл) | Відділення №18</option>
+    </select>
+</body>
+        
+        <label for="phone-number">Номер телефона:</label>
+        <input type="text" id="phone-number" asp-for="PhoneNumber" placeholder="Введите номер телефона" required>
+         @Html.ValidationMessageFor(x => x.PhoneNumber)
+         <label for="phone-number">Имя</label>
+         <input type="text" placeholder="Введите имя" asp-for="Name" />
+         @Html.ValidationMessageFor(x => x.Name)
+          <label for="phone-number">Фамилия</label>
+           <input type="text" placeholder="Введите фамилию" asp-for="LastName" />
+           @Html.ValidationMessageFor(x => x.LastName)
+           <label for="phone-number">Отчество</label>
+            <input type="text" placeholder="Введите отчество" asp-for="Surname"/>
+            @Html.ValidationMessageFor(x => x.Surname)
+             <label for="phone-number">Email</label>
+              <input type="text" placeholder="Введите Email" asp-for="Email" />
+        <button type="submit">Перейти к оплате</button>
+    </form>
+</body>
+</html>

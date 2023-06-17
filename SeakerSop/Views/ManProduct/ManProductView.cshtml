@@ -1,0 +1,80 @@
+﻿@model IQueryable<SneakersProduct>
+<body>
+    <head>
+        <link type="text/css" rel="stylesheet" href="/css/ManProductStyle/Catalog.css" />
+        <link type="text/css" rel="stylesheet" href="/css/ManProductStyle/Panel.css" />
+    </head>
+
+
+
+
+  <div class="products">  
+    @foreach (var item in Model)
+   {
+  <div class="product-tile"> 
+  <div class="image-container">
+    <img src="@item.Puctures" alt="Product Image">
+  </div>
+  <div class="product-info">
+    <h3>@item.Name</h3>
+    <p> Размер @item.Size см</p>
+    <p>Страна @item.Country</p>
+    <p>Цвет @item.Color</p>
+    <p>Цена @item.Price $</p>
+    <form method="post" asp-controller="ManProduct" asp-action="AddCart" asp-all-route-data='new Dictionary<string,string> {
+{"name",$"{item.Name}"}
+,{"price",$"{item.Price}"},
+{"country",$"{item.Country}"},
+{"color",$"{item.Color}"},
+{"size",$"{item.Size}"},
+{"pictures",$"{item.Puctures}"}}'>
+
+         <button class="add-to-cart">Добавить в корзину</button>
+    </form>
+    <button class="more-info">О товаре</button>
+  </div>
+</div>
+  }    
+  </div>
+
+
+<div class="sidebar">
+  <p>Сортировать по</p>
+  <form method="post" asp-controller="ManProduct" asp-action="SortingProduct">
+     <p>Цвету</p>
+    <input name="color" type="radio" value="White" />
+    <span>Белый</span> <br />
+    <input name="color" type="radio" value="Black" />
+    <span>Черный</span> <br />
+    <input checked="checked" name="color" type="radio" value="Red" />
+    <span>Красный</span>
+    <input checked="checked" name="color" type="radio" value="Grey" />
+    <span>Серый</span>
+    <p>
+        <input type="submit" value="Отправить" />
+    </p>
+</form>
+
+
+
+ <form method="post" asp-controller="ManProduct" asp-action="SortingProduct">
+     <p>Цене</p>
+     <label>До</label><br />
+    <input type="number" name="price" /><br />
+    <p>
+        <input type="submit" value="Отправить" />
+    </p>
+</form>
+
+
+
+<form method="post" asp-controller="ManProduct" asp-action="SortingProduct">
+     <p>Размер</p>
+     <label>Размер стельки</label><br />
+    <input type="number" name="size" /><br />
+    <p>
+        <input type="submit" value="Отправить" />
+    </p>
+</form>
+</div>
+</body>

@@ -1,0 +1,19 @@
+﻿@model LoginUserNotMap
+@{
+    Layout = null;
+}
+<form method="post" asp-controller="Account" asp-action="Login">
+            <label>Gmail</label>
+        <br/>
+        <input asp-for="GmailLogin" class="input-field" />
+         @Html.ValidationMessageFor(x => x.GmailLogin)
+      </p>
+              <label>Password</label>
+        <br/>
+        <input asp-for="PasswordLogin" class="input-field" />
+         @Html.ValidationMessageFor(x => x.PasswordLogin)
+      </p>
+      <p>
+        <input type="submit" value="Submit" class="submit-button" />
+      </p>
+</form>

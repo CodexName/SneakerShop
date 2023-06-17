@@ -1,0 +1,56 @@
+﻿@using SeakerSop.Models;
+@model IQueryable<Order>
+<body>
+  <style>
+      table {
+    border-collapse: collapse;
+    width: 100%;
+    color: black;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid black;
+}
+
+th {
+    background-color: black;
+    color: white;
+}
+
+button {
+    padding: 5px 10px;
+}
+
+  </style>
+<div>
+        <table>
+    <thead>
+        <tr>
+            <th>Название</th>
+            <th>Размер</th>
+            <th>Цена</th>
+            <th>Цвет</th>
+            <th>Страна</th>
+            <th>Время</th>
+            <th> </th>
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Surname</td>
+                <td>@item.Date</td>
+                <td>@item.Email</td>
+                <td>@item.LastName</td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+    </body>
+
